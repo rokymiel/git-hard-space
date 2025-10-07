@@ -1,0 +1,56 @@
+From 851305e94172b2b49bb9b6add53419c58f24edc9 Mon Sep 17 00:00:00 2001
+From: Rokymiel <33631970+rokymiel@users.noreply.github.com>
+Date: Sun, 28 May 2023 21:52:24 +0300
+Subject: [PATCH 1/2] Simple accident calculation Secret coordinates:
+ 56.779677, 161.082807
+
+Signed-off-by: Rokymiel <33631970+rokymiel@users.noreply.github.com>
+---
+ launch.sh | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/launch.sh b/launch.sh
+index d62cdd8..3dfac0d 100755
+--- a/launch.sh
++++ b/launch.sh
+@@ -1,7 +1,8 @@
+ #!/bin/bash
+ 
+ calculate_accident_fall_point() {
+-  echo "0" > accident_fp.txt
++  let i=i+1
++  echo "$i" > accident_fp.txt
+ }
+ 
+ calculate_satellite_orbit() {
+-- 
+2.26.2
+
+
+From 1c8225a500b74e84905a551a6fd6431933b8575f Mon Sep 17 00:00:00 2001
+From: Rokymiel <33631970+rokymiel@users.noreply.github.com>
+Date: Sun, 28 May 2023 21:56:48 +0300
+Subject: [PATCH 2/2] Accident FP calculated
+
+Signed-off-by: Rokymiel <33631970+rokymiel@users.noreply.github.com>
+---
+ launch.sh | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/launch.sh b/launch.sh
+index 3dfac0d..a0f8615 100755
+--- a/launch.sh
++++ b/launch.sh
+@@ -1,7 +1,9 @@
+ #!/bin/bash
+ 
+ calculate_accident_fall_point() {
++  let i=0
+   let i=i+1
++  let i=i*2
+   echo "$i" > accident_fp.txt
+ }
+ 
+-- 
+2.26.2
+

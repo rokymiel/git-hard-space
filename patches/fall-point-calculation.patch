@@ -1,0 +1,117 @@
+From 2da883c2aa25c50771ef8273d9ba9f8fc099fe5b Mon Sep 17 00:00:00 2001
+From: Rokymiel <33631970+rokymiel@users.noreply.github.com>
+Date: Mon, 29 May 2023 00:21:48 +0300
+Subject: [PATCH 1/4] Real fall point method prototype added
+
+Signed-off-by: Rokymiel <33631970+rokymiel@users.noreply.github.com>
+---
+ launch.sh | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/launch.sh b/launch.sh
+index d62cdd8..89c9306 100755
+--- a/launch.sh
++++ b/launch.sh
+@@ -1,5 +1,9 @@
+ #!/bin/bash
+ 
++calculate_fall_point() {
++  echo "0" > fp.txt
++}
++
+ calculate_accident_fall_point() {
+   echo "0" > accident_fp.txt
+ }
+@@ -16,6 +20,7 @@ calculate_fuel() {
+   echo "0" > fuel.txt
+ }
+ 
++calculate_fall_point
+ calculate_accident_fall_point
+ calculate_satellite_orbit
+ calculate_flight_time
+-- 
+2.26.2
+
+
+From b3102bf2a4b4776a21bbad3205771b563b6adeda Mon Sep 17 00:00:00 2001
+From: Rokymiel <33631970+rokymiel@users.noreply.github.com>
+Date: Mon, 29 May 2023 00:23:24 +0300
+Subject: [PATCH 2/4] Experiment: let's multiply
+
+Signed-off-by: Rokymiel <33631970+rokymiel@users.noreply.github.com>
+---
+ launch.sh | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/launch.sh b/launch.sh
+index 89c9306..0a6db5a 100755
+--- a/launch.sh
++++ b/launch.sh
+@@ -1,7 +1,10 @@
+ #!/bin/bash
+ 
+ calculate_fall_point() {
+-  echo "0" > fp.txt
++  let POINT=1
++  let POINT=POINT*2
++  
++  echo "$POINT" > fp.txt
+ }
+ 
+ calculate_accident_fall_point() {
+-- 
+2.26.2
+
+
+From 2348117a41f64db974e94a42568d3788ab71e447 Mon Sep 17 00:00:00 2001
+From: Rokymiel <33631970+rokymiel@users.noreply.github.com>
+Date: Mon, 29 May 2023 00:23:44 +0300
+Subject: [PATCH 3/4] Experiment: let's add
+
+Signed-off-by: Rokymiel <33631970+rokymiel@users.noreply.github.com>
+---
+ launch.sh | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/launch.sh b/launch.sh
+index 0a6db5a..9060907 100755
+--- a/launch.sh
++++ b/launch.sh
+@@ -3,6 +3,7 @@
+ calculate_fall_point() {
+   let POINT=1
+   let POINT=POINT*2
++  let POINT=POINT+3
+   
+   echo "$POINT" > fp.txt
+ }
+-- 
+2.26.2
+
+
+From 9fdd6594dd0ec4bfcab36577142d3e45d1aa6a44 Mon Sep 17 00:00:00 2001
+From: Rokymiel <33631970+rokymiel@users.noreply.github.com>
+Date: Mon, 29 May 2023 00:24:33 +0300
+Subject: [PATCH 4/4] Final fall point implementation with square
+
+Signed-off-by: Rokymiel <33631970+rokymiel@users.noreply.github.com>
+---
+ launch.sh | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/launch.sh b/launch.sh
+index 9060907..39e692c 100755
+--- a/launch.sh
++++ b/launch.sh
+@@ -4,6 +4,7 @@ calculate_fall_point() {
+   let POINT=1
+   let POINT=POINT*2
+   let POINT=POINT+3
++  let POINT=POINT*POINT
+   
+   echo "$POINT" > fp.txt
+ }
+-- 
+2.26.2
+

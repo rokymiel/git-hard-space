@@ -1,0 +1,99 @@
+name: Git tests
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  check_comment_edit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        ref: calculate-accident-fall-point
+        fetch-depth: 0
+    - name: Run check_comment_edit.sh
+      run: |
+         cd 02-git-tests
+         ./check_comment_edit.sh
+      shell: bash
+  check_branch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        ref: simple-satellite-orbit
+        fetch-depth: 0
+    - name: Run check_branch.sh
+      run: |
+         cd 02-git-tests
+         ./check_branch.sh
+      shell: bash
+  check_amend:
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        ref: fuel-estimation
+        fetch-depth: 0
+    - name: Run check_amend.sh
+      run: |
+         cd 02-git-tests
+         ./check_amend.sh
+      shell: bash
+  check_squash:
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        ref: fall-point-calculation
+        fetch-depth: 0
+    - name: Run check_squash.sh
+      run: |
+         cd 02-git-tests
+         ./check_squash.sh
+      shell: bash
+  check_cherry_pick:
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        ref: flight-time-estimation
+        fetch-depth: 0
+    - name: Run check_cherry_pick.sh
+      run: |
+         cd 02-git-tests
+         ./check_cherry_pick.sh
+      shell: bash
+  check_revert:
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        ref: fix-flight-time
+        fetch-depth: 0
+    - name: Run check_revert.sh
+      run: |
+         cd 02-git-tests
+         ./check_revert.sh
+      shell: bash
+  check_merge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        ref: dev
+        fetch-depth: 0
+    - name: Run check_merge.sh
+      run: |
+         cd 02-git-tests
+         ./check_merge.sh
+      shell: bash
